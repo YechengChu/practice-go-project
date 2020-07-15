@@ -15,3 +15,4 @@
 
 To Do：
 * 增加postgres的使用
+* 使用redis
