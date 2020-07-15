@@ -1,4 +1,4 @@
-用Golang实现用户注册登录功能
+目标：用Golang实现用户注册登录功能
 
 * 打开localhost:3000/signup，填写注册信息
     * 用户名(验证要求：手机号码或邮箱)
@@ -12,3 +12,6 @@
 * 任选一种web framework https://github.com/mingrammer/go-web-framework-stars
 * 数据库使用postgres
 * 登录状态缓存使用redis
+
+To Do：
+* 增加postgres的使用
