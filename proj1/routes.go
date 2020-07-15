@@ -14,20 +14,6 @@ func initializeRoutes() {
 
 	// Handle the index route
 	router.GET("/", showIndexPage)
-	// router.GET("/", func(c *gin.Context) {
-	//
-	// 	// Call the HTML method of the Context to render a template
-	// 	c.HTML(
-	// 		// Set the HTTP status to 200 (OK)
-	// 		http.StatusOK,
-	// 		// Use the index.html template
-	// 		"index.html",
-	// 		// Pass the data that the page uses (in this case, 'title')
-	// 		gin.H{
-	// 			"title": "Home Page",
-	// 		},
-	// 	)
-	// })
 
 	// Group user related routes together
 	userRoutes := router.Group("/")
@@ -44,6 +30,8 @@ func initializeRoutes() {
 		// Handle GET requests at /u/logut
 		// Ensure that the user is logged in by using the middleware
 		userRoutes.GET("logout", ensureLoggedIn(), logout)
+
+		userRoutes.GET("profile", viewProfile)
 
 		// Handle the GET requests at /u/register
 		// Show the registration page

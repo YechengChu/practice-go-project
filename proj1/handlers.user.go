@@ -10,6 +10,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var UserName string
+
 func showLoginPage(c *gin.Context) {
 	// Call the render function with the name of the template to render
 	render(c, gin.H{
@@ -28,10 +30,11 @@ func performLogin(c *gin.Context) {
 	if isUserValid(username, password) {
 		// If the username/password is valid set the token in a cookie
 		token := generateSessionToken()
+		UserName = username
 		c.SetCookie("token", token, 3600, "", "", false, true)
 		c.Set("is_logged_in", true)
 		render(c, gin.H{
-			"title": "Successful Login",
+			"title":   "Successful Login",
 			"payload": username}, "logged.html")
 	} else {
 		// If the username/password combination is invalid,
@@ -47,6 +50,18 @@ func generateSessionToken() string {
 	// This is NOT a secure way of generating session tokens
 	// DO NOT USE THIS IN PRODUCTION
 	return strconv.FormatInt(rand.Int63(), 16)
+}
+
+func viewProfile(c *gin.Context) {
+	loggedInInterface, _ := c.Get("is_logged_in")
+	loggedIn := loggedInInterface.(bool)
+	if loggedIn {
+		render(c, gin.H{
+			"title":   "Successful Login",
+			"payload": UserName}, "logged.html")
+	} else {
+		c.Redirect(http.StatusTemporaryRedirect, "/signin")
+	}
 }
 
 func logout(c *gin.Context) {
@@ -78,9 +93,9 @@ func register(c *gin.Context) {
 		token := generateSessionToken()
 		c.SetCookie("token", token, 3600, "", "", false, true)
 		c.Set("is_logged_in", true)
-
+    UserName = username
 		render(c, gin.H{
-			"title": "Successful registration & Login",
+			"title":   "Successful registration & Login",
 			"payload": username}, "logged.html")
 	} else {
 		// If the username/password combination is invalid,
