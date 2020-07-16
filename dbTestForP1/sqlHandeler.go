@@ -46,8 +46,8 @@ func query(givenAcc string) (hasAccount bool, pass string) {
 	return
 } // query
 
-func init() {
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
+func initDB() {
+	openDBSQL := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname)
 
@@ -56,8 +56,13 @@ func init() {
 	sqlCommand := string(sqlBytes)
 
 	var errOpenDB error
-	db, errOpenDB = sql.Open("postgres", psqlInfo)
-	fmt.Printf("db has type of %T\n", db)
+	db, errOpenDB = sql.Open("postgres", openDBSQL)
+	// fmt.Printf("db has type of %T\n", db)
 	checkErr(errOpenDB)
+	_, err = db.Exec(sqlCommand)
+	checkErr(err)
+}
 
+func closeDB(){
+	db.Close()
 }
