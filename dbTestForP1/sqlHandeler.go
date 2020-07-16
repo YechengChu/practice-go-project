@@ -46,7 +46,7 @@ func query(givenAcc string) (hasAccount bool, pass string) {
 	return
 } // query
 
-func main() {
+func init() {
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname)
@@ -59,15 +59,5 @@ func main() {
 	db, errOpenDB = sql.Open("postgres", psqlInfo)
 	fmt.Printf("db has type of %T\n", db)
 	checkErr(errOpenDB)
-	defer db.Close()
 
-	_, err = db.Exec(sqlCommand)
-	checkErr(err)
-	insert("szcyc001@123.com", "Asdfghjkl")
-	insert("szcyc003@111.com", "123aaa")
-	hasAcc, password := query("szcyc001@123.com")
-	hasAcc2, password2 := query("szcyc001@163.com")
-	fmt.Printf("%v, %s\n", hasAcc, password)
-	fmt.Printf("%v, %s\n", hasAcc2, password2)
-	fmt.Println("Everything done!")
 }
