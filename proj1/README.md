@@ -1,4 +1,4 @@
-<h1>目标：用Golang实现用户注册登录功能</h1>
+目标：用Golang实现用户注册登录功能
 
 * 打开localhost:3000/signup，填写注册信息
     * 用户名(验证要求：手机号码或邮箱)
@@ -8,15 +8,15 @@
     * 若登录失败 -> 停留当前页面，显示Login Failed
 * 登录状态保持在前端，未登录状态打开localhost:3000/profile，跳转至localhost:3000/signin
 
-<h2>模块需求</h2>
+模块需求
 * 任选一种web framework https://github.com/mingrammer/go-web-framework-stars
 * 数据库使用postgres
 * 登录状态缓存使用redis
 
-<h2>To Do：</h2>
+To Do：
 * 增加postgres的使用
 * 使用redis
 
-<h2>运行 </h2>
+运行
 go build -o app
 ./app
