@@ -20,3 +20,6 @@ To Do：
 运行
 <br>go build -o app
 <br>./app
+
+<br>
+Code adapted from https://github.com/demo-apps/go-gin-app
