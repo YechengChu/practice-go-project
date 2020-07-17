@@ -14,7 +14,6 @@
 * 登录状态缓存使用redis
 
 To Do：
-* 增加postgres的使用
 * 使用redis
 
 运行
