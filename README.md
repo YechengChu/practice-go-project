@@ -1,1 +1,1 @@
-# Repository for practice project using golang
+# Repository for practice projects using golang
