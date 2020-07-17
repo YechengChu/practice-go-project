@@ -24,8 +24,6 @@ func performLogin(c *gin.Context) {
 	username := c.PostForm("username")
 	password := c.PostForm("password")
 
-	// var sameSiteCookie http.SameSite;
-
 	// Check if the username/password combination is valid
 	if isUserValid(username, password) {
 		// If the username/password is valid set the token in a cookie
@@ -66,8 +64,6 @@ func viewProfile(c *gin.Context) {
 
 func logout(c *gin.Context) {
 
-	// var sameSiteCookie http.SameSite;
-
 	// Clear the cookie
 	c.SetCookie("token", "", -1, "", "", false, true)
 
@@ -86,8 +82,6 @@ func register(c *gin.Context) {
 	username := c.PostForm("username")
 	password := c.PostForm("password")
 
-	// var sameSiteCookie http.SameSite;
-
 	if _, err := registerNewUser(username, password); err == nil {
 		// If the user is created, set the token in a cookie and log the user in
 		token := generateSessionToken()
@@ -103,6 +97,5 @@ func register(c *gin.Context) {
 		c.HTML(http.StatusBadRequest, "register.html", gin.H{
 			"ErrorTitle":   "Registration Failed",
 			"ErrorMessage": err.Error()})
-
 	}
 }

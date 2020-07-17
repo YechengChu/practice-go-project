@@ -11,6 +11,9 @@ import (
 var router *gin.Engine
 
 func main() {
+  // init the database
+  initDB()
+	defer closeDB()
 
 	// Set the router as the default one provided by Gin
 	router = gin.Default()
@@ -24,7 +27,6 @@ func main() {
 
 	// Start serving the application
 	router.Run(":3000")
-
 }
 
 // Render one of HTML, JSON or CSV based on the 'Accept' header of the request

@@ -18,27 +18,28 @@ func initializeRoutes() {
 	// Group user related routes together
 	userRoutes := router.Group("/")
 	{
-		// Handle the GET requests at /u/login
+		// Handle the GET requests at /signin
 		// Show the login page
 		// Ensure that the user is not logged in by using the middleware
 		userRoutes.GET("signin", ensureNotLoggedIn(), showLoginPage)
 
-		// Handle POST requests at /u/login
+		// Handle POST requests at /profile
 		// Ensure that the user is not logged in by using the middleware
 		userRoutes.POST("profile", ensureNotLoggedIn(), performLogin)
 
-		// Handle GET requests at /u/logut
+		// Handle GET requests at /logout
 		// Ensure that the user is logged in by using the middleware
 		userRoutes.GET("logout", ensureLoggedIn(), logout)
 
+    // Handle GET request at /profile
 		userRoutes.GET("profile", viewProfile)
 
-		// Handle the GET requests at /u/register
+		// Handle the GET requests at /signup
 		// Show the registration page
 		// Ensure that the user is not logged in by using the middleware
 		userRoutes.GET("signup", ensureNotLoggedIn(), showRegistrationPage)
 
-		// Handle POST requests at /u/register
+		// Handle POST requests at /signup
 		// Ensure that the user is not logged in by using the middleware
 		userRoutes.POST("signup", ensureNotLoggedIn(), register)
 	}
