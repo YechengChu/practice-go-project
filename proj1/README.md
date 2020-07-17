@@ -20,5 +20,5 @@
 go build -o app
 ./app
 
-
+### Note
 Code adapted from https://github.com/demo-apps/go-gin-app
