@@ -11,7 +11,7 @@
 - https://chai2010.cn/advanced-go-programming-book/
 - https://books.studygolang.com/gopl-zh/
 
-### Task1
+### :paperclip: Task1
 #### Reference
 - https://www.cnblogs.com/lfri/p/11769254.html
 - https://www.cnblogs.com/famine/p/11973534.html
@@ -26,7 +26,7 @@
   $ telnet 127.0.0.1 50000
   ```
   
-### Task2
+### :paperclip: Task2
 #### Reference
 - code in Task1
 - https://www.ctolib.com/dengsgo-math-engine.html
@@ -40,7 +40,7 @@
   $ telnet 127.0.0.1 50000
   ```
 
-### Task3
+### :paperclip: Task3
 #### Reference
 - code in Task1
 - https://gobyexample.com/random-numbers
