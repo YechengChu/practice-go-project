@@ -15,6 +15,7 @@
 #### Reference
 - https://www.cnblogs.com/lfri/p/11769254.html
 - https://www.cnblogs.com/famine/p/11973534.html
+- https://books.studygolang.com/gopl-zh/ch8/ch8-02.html
 #### How to run?
 - In one terminal run $go run reverse.go
 - In another terminal run $telnet 127.0.0.1 50000
