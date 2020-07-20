@@ -27,3 +27,11 @@
 #### How to run?
 - In one terminal run $go run calculator.go
 - In another terminal run $telnet 127.0.0.1 50000
+
+### Task3
+#### Reference
+- code in Task1
+- https://gobyexample.com/random-numbers
+#### How to run?
+- In one terminal run $go run randomNum.go
+- In another terminal run $telnet 127.0.0.1 50000
