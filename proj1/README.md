@@ -14,7 +14,7 @@
 * 登录状态缓存使用redis
 
 ### To Do：
-* 使用redis
+:radio_button: 使用redis
 
 ### 运行
 ```
