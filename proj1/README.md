@@ -18,8 +18,8 @@
 
 ### 运行
 ```
-go build -o app
-./app
+$ go build -o app
+$ ./app
 ```
 
 ### Note
