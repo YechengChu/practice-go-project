@@ -1,1 +1,1 @@
-# Repository for practice projects using golang
+# Repository for practice projects using golang :blush:
