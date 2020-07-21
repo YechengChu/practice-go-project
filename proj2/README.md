@@ -53,3 +53,9 @@
   ```
   $ telnet 127.0.0.1 50000
   ```
+
+### :paperclip: Task6
+#### Reference
+- https://blog.csdn.net/stpeace/article/details/82716145
+- https://blog.csdn.net/BlackCarDriver/article/details/87870109
+- https://riptutorial.com/go/example/31693/convert-color-image-to-grayscale
