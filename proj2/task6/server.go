@@ -32,7 +32,7 @@ func main() {
 	http.HandleFunc("/uploaded/", showPicHandle) //显示图片
 	err := http.ListenAndServe(":3000", nil)
 	fmt.Println(err)
-}
+} // main
 
 // 上传图像接口
 func uploadHandle(w http.ResponseWriter, req *http.Request) {
@@ -52,7 +52,7 @@ func uploadHandle(w http.ResponseWriter, req *http.Request) {
 			errorHandle(errors.New("Only JPG or PNG is supported"), w)
 			return
 			//defer os.Exit(2)
-		}
+		} // if
 
 		// 保存图片
 		os.Mkdir("./uploaded/", 0777)
@@ -67,8 +67,8 @@ func uploadHandle(w http.ResponseWriter, req *http.Request) {
 		// 上传图片成功
 		w.Write([]byte("See the uploaded image: <a target='_blank' href='/uploaded/" + handle.Filename + "'>" + handle.Filename + "</a> <br>" +
 			"Image to greyscale is: <a target='_blank' href='/uploaded/gray_" + handle.Filename + "'>" + "gray_" + handle.Filename))
-	}
-}
+	} // if ... else
+} // uploadHandle
 
 // 显示图片接口
 func showPicHandle(w http.ResponseWriter, req *http.Request) {
@@ -79,14 +79,14 @@ func showPicHandle(w http.ResponseWriter, req *http.Request) {
 	buff, err := ioutil.ReadAll(file)
 	errorHandle(err, w)
 	w.Write(buff)
-}
+} // showPicHandle
 
 // 统一错误输出接口
 func errorHandle(err error, w http.ResponseWriter) {
 	if err != nil {
 		w.Write([]byte(err.Error()))
-	}
-}
+	} // if
+} // errorHandle
 
 // 将图片转成黑白并保存
 func converter(input string) {
@@ -94,13 +94,13 @@ func converter(input string) {
 	inputName, err := os.Open("./uploaded/"+input)
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
-	}
+	} // if
 	// Decode image to JPEG
 	img, _, err := image.Decode(inputName)
 	if err != nil {
 		// handle error
 		log.Fatal(err)
-	}
+	} // if
 	// log.Printf("Image type: %T", img)
 
 	// Converting image to grayscale
@@ -108,8 +108,8 @@ func converter(input string) {
 	for y := img.Bounds().Min.Y; y < img.Bounds().Max.Y; y++ {
 		for x := img.Bounds().Min.X; x < img.Bounds().Max.X; x++ {
 			grayImg.Set(x, y, img.At(x, y))
-		}
-	}
+		} // for
+	} // for
 
 	// Working with grayscale image, e.g. convert to png
 	// And save to uploaded file
@@ -117,10 +117,10 @@ func converter(input string) {
 	if err != nil {
 		// handle error
 		log.Fatal(err)
-	}
+	} // if
 	defer f.Close()
 
 	if err := png.Encode(f, grayImg); err != nil {
 		log.Fatal(err)
-	}
-}
+	} // if
+} // converter
