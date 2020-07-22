@@ -48,6 +48,8 @@
 - In one terminal run
   ```
   $ go run randomNum.go
+  OR
+  $ go run randomNum2.go
   ```
 - In another terminal run
   ```

@@ -8,6 +8,7 @@ import (
 	"strings"
 	"time"
 )
+var randomInt int
 
 func main() {
 	fmt.Println("Starting the server ...")
@@ -30,19 +31,28 @@ func main() {
 	}
 }
 
-func randomNo() int {
-	s1 := rand.NewSource(time.Now().UnixNano())
-	// fmt.Println(time.Now().UnixNano())
-	// fmt.Printf("Time is: %v\n", time.Now().UnixNano())
-	r1 := rand.New(s1)
-	randomNumber := r1.Intn(1000)
+func randomNo(randomCh chan int){
+	for{
+		s1 := rand.NewSource(time.Now().UnixNano())
+		// fmt.Printf("Time is: %v\n", time.Now().UnixNano())
+		r1 := rand.New(s1)
+		randomNumber := r1.Intn(1000)
+		// fmt.Printf("The random number is: %v\n", randomNumber)
+		go randHandler(randomCh)
+		randomCh <- randomNumber
+	}
+}
 
-	// fmt.Printf("The random number has type: %T\n", r1.Intn(1000))
-	fmt.Printf("The random number is: %v\n", randomNumber)
-	return randomNumber
+func randHandler(randomCh chan int){
+	x := <- randomCh
+	fmt.Printf("The random number is: %v\n", x)
+	randomInt = x
 }
 
 func doServerStuff(conn net.Conn) {
+	randomChannel := make(chan int)
+	go randomNo(randomChannel)
+	// go randomNo()
 	fmt.Fprintf(conn, "Welcome to the random number generator, getting an int number within 1000!\n")
 	for {
 		buf := make([]byte, 512)
@@ -53,6 +63,8 @@ func doServerStuff(conn net.Conn) {
 		}
 		inputSting := strings.Trim(string(buf[:len]), "\r\n")
 		fmt.Printf("Received data: %v\n", inputSting)
-		fmt.Fprintf(conn, "Random number = %v\n", randomNo())
+		// randomNo := randHander(randomChannel)
+		// randomNumber := randomNo()
+		fmt.Fprintf(conn, "Random number = %v\n",randomInt)
 	}
 }
