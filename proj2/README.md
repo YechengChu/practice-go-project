@@ -44,6 +44,8 @@
 #### Reference
 - code in Task1
 - https://gobyexample.com/random-numbers
+- https://zhuanlan.zhihu.com/p/94684495
+- https://yourbasic.org/golang/convert-int-to-string/
 #### How to run?
 - In one terminal run
   ```

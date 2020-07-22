@@ -2,13 +2,13 @@
 package main
 
 import (
+	"crypto/rand"
 	"fmt"
-	"math/rand"
+	"math/big"
 	"net"
 	"strings"
-	"time"
 )
-var randomInt int
+
 
 func main() {
 	fmt.Println("Starting the server ...")
@@ -31,22 +31,19 @@ func main() {
 	}
 }
 
-func randomNo(randomCh chan int){
-	for{
-		s1 := rand.NewSource(time.Now().UnixNano())
-		// fmt.Printf("Time is: %v\n", time.Now().UnixNano())
-		r1 := rand.New(s1)
-		randomNumber := r1.Intn(1000)
+func randomNo(randomCh chan int) {
+	for {
+		n, _ := rand.Int(rand.Reader, big.NewInt(1000))
+		randomNumber := int(n.Int64())
 		// fmt.Printf("The random number is: %v\n", randomNumber)
 		go randHandler(randomCh)
 		randomCh <- randomNumber
 	}
 }
 
-func randHandler(randomCh chan int){
-	x := <- randomCh
+func randHandler(randomCh chan int) {
+	x := <-randomCh
 	fmt.Printf("The random number is: %v\n", x)
-	randomInt = x
 }
 
 func doServerStuff(conn net.Conn) {
@@ -65,6 +62,6 @@ func doServerStuff(conn net.Conn) {
 		fmt.Printf("Received data: %v\n", inputSting)
 		// randomNo := randHander(randomChannel)
 		// randomNumber := randomNo()
-		fmt.Fprintf(conn, "Random number = %v\n",randomInt)
+		fmt.Fprintf(conn, "Random number = %v\n", <-randomChannel)
 	}
 }
