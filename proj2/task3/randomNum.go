@@ -16,7 +16,7 @@ func main() {
 	if err != nil {
 		fmt.Println("Error listening", err.Error())
 		return //终止程序
-	}
+	} // if
 	// 监听并接受来自客户端的连接
 	for {
 		conn, err := listener.Accept()
@@ -27,8 +27,8 @@ func main() {
 			fmt.Println("Someone is connected!")
 		}
 		go doServerStuff(conn)
-	}
-}
+	} // for
+} // main
 
 func randomNo() int {
 	s1 := rand.NewSource(time.Now().UnixNano())
@@ -40,7 +40,7 @@ func randomNo() int {
 	// fmt.Printf("The random number has type: %T\n", r1.Intn(1000))
 	fmt.Printf("The random number is: %v\n", randomNumber)
 	return randomNumber
-}
+} // randomNo
 
 func doServerStuff(conn net.Conn) {
 	fmt.Fprintf(conn, "Welcome to the random number generator, getting an int number within 1000!\n")
@@ -50,9 +50,9 @@ func doServerStuff(conn net.Conn) {
 		if err != nil {
 			fmt.Println("Error reading", err.Error())
 			return //终止程序
-		}
+		} // if
 		inputSting := strings.Trim(string(buf[:len]), "\r\n")
 		fmt.Printf("Received data: %v\n", inputSting)
 		fmt.Fprintf(conn, "Random number = %v\n", randomNo())
-	}
-}
+	} // for
+} // doServerStuff

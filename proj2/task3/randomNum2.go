@@ -7,7 +7,7 @@ import (
 	"math/big"
 	"net"
 	"strings"
-	// "time"
+	"time"
 )
 
 
@@ -18,7 +18,7 @@ func main() {
 	if err != nil {
 		fmt.Println("Error listening", err.Error())
 		return //终止程序
-	}
+	} // if
 	// 监听并接受来自客户端的连接
 	for {
 		conn, err := listener.Accept()
@@ -29,25 +29,27 @@ func main() {
 			fmt.Println("Someone is connected!")
 		}
 		go doServerStuff(conn)
-	}
-}
+	} // for
+} // main
 
 func randomNo(randomCh chan int) {
 	for {
+		// use crypto/rand to generate a true random number
 		n, _ := rand.Int(rand.Reader, big.NewInt(1000))
 		randomNumber := int(n.Int64())
 		// fmt.Printf("The random number is: %v\n", randomNumber)
-		// fmt.Printf("The random number is: %v\n", randomNumber)
 		go randHandler(randomCh)
 		randomCh <- randomNumber
-		// time.Sleep(10 * 1e9) // sleep for 2 seconds
-	}
-}
+	} // for
+} // randomNo
 
 func randHandler(randomCh chan int) {
+	// wait for 10 seconds before receive so that the doServerStuff can get the
+	// random number generated
+	time.Sleep(10 * 1e9) // sleep for 10 seconds
 	x := <-randomCh
 	fmt.Printf("The random number is: %v\n", x)
-}
+} // randHandler
 
 func doServerStuff(conn net.Conn) {
 	randomChannel := make(chan int)
@@ -60,11 +62,11 @@ func doServerStuff(conn net.Conn) {
 		if err != nil {
 			fmt.Println("Error reading", err.Error())
 			return //终止程序
-		}
+		} // if
 		inputSting := strings.Trim(string(buf[:len]), "\r\n")
 		fmt.Printf("Received data: %v\n", inputSting)
 		// randomNo := randHander(randomChannel)
 		// randomNumber := randomNo()
 		fmt.Fprintf(conn, "Random number = %v\n", <-randomChannel)
-	}
-}
+	} // for
+} // doServerStuff
