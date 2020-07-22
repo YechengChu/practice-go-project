@@ -7,6 +7,7 @@ import (
 	"math/big"
 	"net"
 	"strings"
+	// "time"
 )
 
 
@@ -36,14 +37,16 @@ func randomNo(randomCh chan int) {
 		n, _ := rand.Int(rand.Reader, big.NewInt(1000))
 		randomNumber := int(n.Int64())
 		// fmt.Printf("The random number is: %v\n", randomNumber)
+		fmt.Printf("The random number is: %v\n", randomNumber)
 		go randHandler(randomCh)
 		randomCh <- randomNumber
+		// time.Sleep(10 * 1e9) // sleep for 2 seconds
 	}
 }
 
 func randHandler(randomCh chan int) {
 	x := <-randomCh
-	fmt.Printf("The random number is: %v\n", x)
+	// fmt.Printf("The random number is: %v\n", x)
 }
 
 func doServerStuff(conn net.Conn) {
