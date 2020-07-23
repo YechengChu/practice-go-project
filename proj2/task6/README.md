@@ -142,20 +142,28 @@ localhost:3000/upload
 ```
 ## 运行结果展示
 ![Screen Shot 2020-07-21 at 19.16.41.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330207709-63d21465-82c6-4cd5-9296-f3732542b7ee.png#align=left&display=inline&height=267&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.16.41.png&originHeight=267&originWidth=591&size=32764&status=done&style=none&width=591)
+
 在task6文件夹中打开命令行，比如使用iTerm
 ![Screen Shot 2020-07-21 at 19.18.36.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330323323-274ec78f-09c1-4a76-8382-ce626be425df.png#align=left&display=inline&height=112&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.18.36.png&originHeight=112&originWidth=732&size=19402&status=done&style=none&width=732)
+
 运行server
 ![Screen Shot 2020-07-21 at 19.19.12.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330359557-07a8ac93-1530-429a-ab5e-a12c9829dbaf.png#align=left&display=inline&height=326&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.19.12.png&originHeight=326&originWidth=1319&size=38504&status=done&style=none&width=1319)
+
 使用浏览器打开网页
 ![Screen Shot 2020-07-21 at 19.20.22.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330432946-cad16f38-82ab-4641-b316-83d0a556880f.png#align=left&display=inline&height=489&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.20.22.png&originHeight=489&originWidth=958&size=121292&status=done&style=none&width=958)
+
 选择图片上传，并提交
 ![Screen Shot 2020-07-21 at 19.25.00.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330707133-21b78e7a-61ce-42af-85ab-eea068cdcee5.png#align=left&display=inline&height=253&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.25.00.png&originHeight=253&originWidth=615&size=51197&status=done&style=none&width=615)
+
 在用户点击提交按钮后，会在server运行的文件夹内自动创建uploaded文件夹，保存用户上传的图片和转换成的黑白图片
 ![Screen Shot 2020-07-21 at 19.20.57.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330464236-9c6a14a1-1c7c-49f1-a263-dec48c08d6ad.png#align=left&display=inline&height=151&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.20.57.png&originHeight=151&originWidth=1312&size=35178&status=done&style=none&width=1312)
+
 网页会显示2个链接，一个是原图链接，一个是黑白图片的链接
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330598780-8419d63b-44b8-426b-9187-8676e0ab90c7.png#align=left&display=inline&height=675&margin=%5Bobject%20Object%5D&name=image.png&originHeight=675&originWidth=1316&size=827027&status=done&style=none&width=1316)
 ![Screen Shot 2020-07-21 at 19.23.17.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330612534-261df0fa-031d-414a-91d1-44f413260894.png#align=left&display=inline&height=683&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.23.17.png&originHeight=683&originWidth=1315&size=372857&status=done&style=none&width=1315)
-若用户提交的图片不是PNG或者JPG类型，网站会报错![Screen Shot 2020-07-21 at 19.28.27.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330914095-3dec6cb1-fdb1-423f-a0ef-7503d034fbba.png#align=left&display=inline&height=116&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.28.27.png&originHeight=116&originWidth=943&size=21962&status=done&style=none&width=943)
+若用户提交的图片不是PNG或者JPG类型，网站会报错
+
+![Screen Shot 2020-07-21 at 19.28.27.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330914095-3dec6cb1-fdb1-423f-a0ef-7503d034fbba.png#align=left&display=inline&height=116&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.28.27.png&originHeight=116&originWidth=943&size=21962&status=done&style=none&width=943)
 
 ---
 
