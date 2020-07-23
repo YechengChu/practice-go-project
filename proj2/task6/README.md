@@ -153,6 +153,7 @@ localhost:3000/upload
 ![Screen Shot 2020-07-21 at 19.20.22.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330432946-cad16f38-82ab-4641-b316-83d0a556880f.png#align=left&display=inline&height=489&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.20.22.png&originHeight=489&originWidth=958&size=121292&status=done&style=none&width=958)
 
 选择图片上传，并提交
+
 ![Screen Shot 2020-07-21 at 19.25.00.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595330707133-21b78e7a-61ce-42af-85ab-eea068cdcee5.png#align=left&display=inline&height=253&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-21%20at%2019.25.00.png&originHeight=253&originWidth=615&size=51197&status=done&style=none&width=615)
 
 在用户点击提交按钮后，会在server运行的文件夹内自动创建uploaded文件夹，保存用户上传的图片和转换成的黑白图片
