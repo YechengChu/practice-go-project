@@ -168,17 +168,15 @@ localhost:3000/upload
 
 ---
 
-代码在GitHub的practice repository中的practice目录下可见，此练习为task6
-[https://github.com/YechengChu/practice/tree/master/proj2](https://github.com/YechengChu/practice/tree/master/proj2)
-
----
-
 ## 参考资料
 用go来搭建一个简单的图片上传网站
 [https://blog.csdn.net/stpeace/article/details/82716145](https://blog.csdn.net/stpeace/article/details/82716145)
+
 golang 上传，下载图片
 [https://blog.csdn.net/BlackCarDriver/article/details/87870109](https://blog.csdn.net/BlackCarDriver/article/details/87870109)
+
 Convert color image to grayscale
 [https://riptutorial.com/go/example/31693/convert-color-image-to-grayscale](https://riptutorial.com/go/example/31693/convert-color-image-to-grayscale)
+
 golang的图片操作：缩放图片+合成图片
 [https://blog.csdn.net/mirage003/article/details/88084303](https://blog.csdn.net/mirage003/article/details/88084303)
