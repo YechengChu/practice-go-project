@@ -33,7 +33,6 @@ func main() {
 } // main
 
 func randomNo(randomCh chan int) {
-	go randHandler(randomCh)
 	for {
 		// use crypto/rand to generate a true random number
 		n, _ := rand.Int(rand.Reader, big.NewInt(1000))
@@ -45,9 +44,9 @@ func randomNo(randomCh chan int) {
 
 func randHandler(randomCh chan int) {
 	for{
-		// wait for 1 second before receive so that the doServerStuff can get the
+		// wait for 5 seconds before receive so that the doServerStuff can get the
 		// random number generated
-		time.Sleep(1 * 1e9) // sleep for 1 second
+		time.Sleep(5 * 1e9) // sleep for 5 seconds
 		x := <-randomCh
 		fmt.Printf("The random number is: %v\n", x)
 	} // for
@@ -55,7 +54,11 @@ func randHandler(randomCh chan int) {
 
 func doServerStuff(conn net.Conn) {
 	randomChannel := make(chan int)
-	go randomNo(randomChannel)
+	// create 5 goroutines
+	for i := 1; i < 6; i++{
+		go randomNo(randomChannel)
+	} // for
+	go randHandler(randomChannel)
 	fmt.Fprintf(conn, "Welcome to the random number generator, getting an int number within 1000!\n")
 	for {
 		buf := make([]byte, 512)

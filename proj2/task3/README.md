@@ -65,7 +65,7 @@ func doServerStuff(conn net.Conn) {
 ```
 运行
 ![Screen Shot 2020-07-22 at 23.15.39.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595431947223-7ca54ec9-28ca-4efa-85f8-55dff49d51c1.png#align=left&display=inline&height=900&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-22%20at%2023.15.39.png&originHeight=900&originWidth=1440&size=134393&status=done&style=none&width=1440)
-### 改进
+### 改进版本一
 
 - 改进1: 上一个版本使用的math/random并不能得到一个真正的随机数，虽然使用时间作为seed能生成一个比较随机的数字，这次使用crypto/rand来生成随机数
 - 改进2: 上一个版本在运用随机数时，没有使用到goroutine这一版使用了goroutine和channel，具体使用如下
@@ -73,8 +73,99 @@ func doServerStuff(conn net.Conn) {
    - 使用go randomNo(randomChannel)，并发执行randomNo来获取随机数
    - randomNo使用crypto/rand不断生成随机数并将其放入randomChannel中
    - 使用go randHandler(randomCh)来提取出生成的随机数，否则channel会被阻塞，后续随机数不会被生成
-   - 用time.Sleep(10 * 1e9)暂停10秒再进行提取，这样在doServerStuff的fmt.Fprintf(conn, "Random number = %v\n", <-randomChannel)中就可以将randomChannel中的值提取出来
-   - 暂停10s也可以减慢随机数生成速度(因为接收者不接收，发送方就会一直阻塞)，避免程序卡顿
+   - 用time.Sleep(1 * 1e9)暂停1秒再进行提取，这样在doServerStuff的fmt.Fprintf(conn, "Random number = %v\n", <-randomChannel)中就可以将randomChannel中的值提取出来
+   - 暂停1s也可以减慢随机数生成速度(因为接收者不接收，发送方就会一直阻塞)，避免程序卡顿
+- 生成随机数机理
+   - 利用crypto/rand生成随机数
+   - 在后台不断生成随机数，利用用户输入的随机性得到随机值
+
+randomNum2.go
+```go
+// code adapted from https://www.cnblogs.com/lfri/p/11769254.html
+package main
+
+import (
+	"crypto/rand"
+	"fmt"
+	"math/big"
+	"net"
+	"strings"
+	"time"
+)
+
+
+func main() {
+	fmt.Println("Starting the server ...")
+	// 创建 listener
+	listener, err := net.Listen("tcp", "localhost:50000")
+	if err != nil {
+		fmt.Println("Error listening", err.Error())
+		return //终止程序
+	} // if
+	// 监听并接受来自客户端的连接
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			fmt.Println("Error accepting", err.Error())
+			return // 终止程序
+		} else {
+			fmt.Println("Someone is connected!")
+		}
+		go doServerStuff(conn)
+	} // for
+} // main
+
+func randomNo(randomCh chan int) {
+	go randHandler(randomCh)
+	for {
+		// use crypto/rand to generate a true random number
+		n, _ := rand.Int(rand.Reader, big.NewInt(1000))
+		randomNumber := int(n.Int64())
+		// fmt.Printf("The random number is: %v\n", randomNumber)
+		randomCh <- randomNumber
+	} // for
+} // randomNo
+
+func randHandler(randomCh chan int) {
+	for{
+		// wait for 1 second before receive so that the doServerStuff can get the
+		// random number generated
+		time.Sleep(1 * 1e9) // sleep for 1 second
+		x := <-randomCh
+		fmt.Printf("The random number is: %v\n", x)
+	} // for
+} // randHandler
+
+func doServerStuff(conn net.Conn) {
+	randomChannel := make(chan int)
+	go randomNo(randomChannel)
+	fmt.Fprintf(conn, "Welcome to the random number generator, getting an int number within 1000!\n")
+	for {
+		buf := make([]byte, 512)
+		len, err := conn.Read(buf)
+		if err != nil {
+			fmt.Println("Error reading", err.Error())
+			return //终止程序
+		} // if
+		inputSting := strings.Trim(string(buf[:len]), "\r\n")
+		fmt.Printf("Received data: %v\n", inputSting)
+		fmt.Fprintf(conn, "Random number = %v\n", <-randomChannel)
+	} // for
+} // doServerStuff
+```
+运行
+![Screen Shot 2020-07-22 at 23.10.50.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595432569122-5b3945aa-e46a-4e41-86d0-ade0ba037f10.png#align=left&display=inline&height=900&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-22%20at%2023.10.50.png&originHeight=900&originWidth=1440&size=139775&status=done&style=none&width=1440)
+### 改进版本二
+
+- 改进：使用5个goroutine向管道中竞争传值实现随机
+   - 比上一版本更加随机
+   - 接收者的接收时间可以适当放缓，因为竞争机制已经能够保证随机，这里使用了5秒
+- 生成随机数机理
+   - 利用crypto/rand生成随机数
+   - 在后台不断生成随机数，利用用户输入的随机性得到随机值
+   - 使用5个goroutine相互竞争往管道中传值的随机性
+
+randomNum3.go
 ```go
 // code adapted from https://www.cnblogs.com/lfri/p/11769254.html
 package main
@@ -116,23 +207,27 @@ func randomNo(randomCh chan int) {
 		n, _ := rand.Int(rand.Reader, big.NewInt(1000))
 		randomNumber := int(n.Int64())
 		// fmt.Printf("The random number is: %v\n", randomNumber)
-		go randHandler(randomCh)
 		randomCh <- randomNumber
 	} // for
 } // randomNo
 
 func randHandler(randomCh chan int) {
-	// wait for 10 seconds before receive so that the doServerStuff can get the
-	// random number generated
-	time.Sleep(10 * 1e9) // sleep for 10 seconds
-	x := <-randomCh
-	fmt.Printf("The random number is: %v\n", x)
+	for{
+		// wait for 5 seconds before receive so that the doServerStuff can get the
+		// random number generated
+		time.Sleep(5 * 1e9) // sleep for 5 seconds
+		x := <-randomCh
+		fmt.Printf("The random number is: %v\n", x)
+	} // for
 } // randHandler
 
 func doServerStuff(conn net.Conn) {
 	randomChannel := make(chan int)
-	go randomNo(randomChannel)
-	// go randomNo()
+	// create 5 goroutines
+	for i := 1; i < 6; i++{
+		go randomNo(randomChannel)
+	} // for
+	go randHandler(randomChannel)
 	fmt.Fprintf(conn, "Welcome to the random number generator, getting an int number within 1000!\n")
 	for {
 		buf := make([]byte, 512)
@@ -143,14 +238,16 @@ func doServerStuff(conn net.Conn) {
 		} // if
 		inputSting := strings.Trim(string(buf[:len]), "\r\n")
 		fmt.Printf("Received data: %v\n", inputSting)
-		// randomNo := randHander(randomChannel)
-		// randomNumber := randomNo()
 		fmt.Fprintf(conn, "Random number = %v\n", <-randomChannel)
 	} // for
 } // doServerStuff
 ```
-运行
-![Screen Shot 2020-07-22 at 23.10.50.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595432569122-5b3945aa-e46a-4e41-86d0-ade0ba037f10.png#align=left&display=inline&height=900&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-22%20at%2023.10.50.png&originHeight=900&originWidth=1440&size=139775&status=done&style=none&width=1440)
+运行结果和上一个版本类似
+
+---
+
+代码在GitHub的practice repository中的practice目录下可见，此练习为task3
+[https://github.com/YechengChu/practice/tree/master/proj2](https://github.com/YechengChu/practice/tree/master/proj2)
 
 ---
 
@@ -178,3 +275,7 @@ golang 生成随机数或者字符
 Convert between int, int64 and string
 
 [https://yourbasic.org/golang/convert-int-to-string/](https://yourbasic.org/golang/convert-int-to-string/)
+
+
+
+
