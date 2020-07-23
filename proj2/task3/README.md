@@ -156,16 +156,25 @@ func doServerStuff(conn net.Conn) {
 
 ## 参考资料
 Rogn
+
 [https://www.cnblogs.com/lfri/p/11769254.html](https://www.cnblogs.com/lfri/p/11769254.html)
+
 8.2. 示例: 并发的Clock服务
+
 [https://books.studygolang.com/gopl-zh/ch8/ch8-02.html](https://books.studygolang.com/gopl-zh/ch8/ch8-02.html)
+
 Go by Example: Random Numbers
+
 [https://gobyexample.com/random-numbers](https://gobyexample.com/random-numbers)
+
 Golang随机数生成
+
 [https://www.cnblogs.com/jukaiit/p/10785433.html](https://www.cnblogs.com/jukaiit/p/10785433.html)
+
 golang 生成随机数或者字符
+
 [https://zhuanlan.zhihu.com/p/94684495](https://zhuanlan.zhihu.com/p/94684495)
+
 Convert between int, int64 and string
+
 [https://yourbasic.org/golang/convert-int-to-string/](https://yourbasic.org/golang/convert-int-to-string/)
-
-
