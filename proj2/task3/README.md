@@ -246,11 +246,6 @@ func doServerStuff(conn net.Conn) {
 
 ---
 
-代码在GitHub的practice repository中的practice目录下可见，此练习为task3
-[https://github.com/YechengChu/practice/tree/master/proj2](https://github.com/YechengChu/practice/tree/master/proj2)
-
----
-
 ## 参考资料
 Rogn
 
