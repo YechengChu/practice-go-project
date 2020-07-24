@@ -57,6 +57,17 @@
   ```
   $ telnet 127.0.0.1 50000
   ```
+  
+### :paperclip: Task5
+#### How to run?
+- In one terminal run
+  ```
+  $ go run crawlerv1.go  
+  OR
+  $ go run crawlerv2.go  
+  ```
+- after the program is finished
+- open the folder named 'downloaded' and select folders and htmls to open
 
 ### :paperclip: Task6
 #### Reference
