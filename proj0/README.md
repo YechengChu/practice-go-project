@@ -1,11 +1,11 @@
-## :pencil2: 用colly爬取一个淘宝货品的价格信息
+# :pencil2: 用colly爬取一个淘宝货品的价格信息
 
-### How to run
+## How to run
 ```
 $ go run example.go 
 ```
 
-### References
+## References
 - https://github.com/gocolly/colly
 - https://pkg.go.dev/github.com/gocolly/colly/v2?tab=doc
 - http://go-colly.org
