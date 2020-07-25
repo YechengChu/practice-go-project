@@ -57,9 +57,13 @@
   ```
   $ telnet 127.0.0.1 50000
   ```
+
+### :paperclip: Task4
+#### Due to lack of knowledge of CGO programming, this task is skipped!
   
 ### :paperclip: Task5
 #### How to run?
+##### For version 1 & 2
 - In one terminal run
   ```
   $ go run crawlerv1.go  
