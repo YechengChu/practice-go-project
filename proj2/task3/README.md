@@ -1,7 +1,13 @@
-## 随机算子
-### 目标
+# 随机算子
+## 目录
+- [目标](https://github.com/YechengChu/practice/tree/master/proj2/task3#目标)
+- [练习](https://github.com/YechengChu/practice/tree/master/proj2/task3#练习)
+- [改进版本一](https://github.com/YechengChu/practice/tree/master/proj2/task3#改进版本一)
+- [改进版本二](https://github.com/YechengChu/practice/tree/master/proj2/task3#改进版本二)
+- [参考资料](https://github.com/YechengChu/practice/tree/master/proj2/task3#参考资料)
+## 目标
 建立一个tcp服务器，telnet该服务器，返回一个真随机算子 (利用gorouine中的知识)
-### 练习
+## 练习
 randomNum.go
 ```go
 // code adapted from https://www.cnblogs.com/lfri/p/11769254.html
@@ -65,7 +71,7 @@ func doServerStuff(conn net.Conn) {
 ```
 运行
 ![Screen Shot 2020-07-22 at 23.15.39.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595431947223-7ca54ec9-28ca-4efa-85f8-55dff49d51c1.png#align=left&display=inline&height=900&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-22%20at%2023.15.39.png&originHeight=900&originWidth=1440&size=134393&status=done&style=none&width=1440)
-### 改进版本一
+## 改进版本一
 
 - 改进1: 上一个版本使用的math/random并不能得到一个真正的随机数，虽然使用时间作为seed能生成一个比较随机的数字，这次使用crypto/rand来生成随机数
 - 改进2: 上一个版本在运用随机数时，没有使用到goroutine这一版使用了goroutine和channel，具体使用如下
@@ -155,7 +161,7 @@ func doServerStuff(conn net.Conn) {
 ```
 运行
 ![Screen Shot 2020-07-22 at 23.10.50.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1595432569122-5b3945aa-e46a-4e41-86d0-ade0ba037f10.png#align=left&display=inline&height=900&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-22%20at%2023.10.50.png&originHeight=900&originWidth=1440&size=139775&status=done&style=none&width=1440)
-### 改进版本二
+## 改进版本二
 
 - 改进：使用5个goroutine向管道中竞争传值实现随机
    - 比上一版本更加随机
