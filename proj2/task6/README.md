@@ -1,4 +1,10 @@
 # 上传彩色图片并以黑白展示
+## 目录
+- [目标](https://github.com/YechengChu/practice/tree/master/proj2/task6#目标)
+- [代码](https://github.com/YechengChu/practice/tree/master/proj2/task6#代码)
+- [运行方法](https://github.com/YechengChu/practice/tree/master/proj2/task6#运行方法)
+- [运行结果展示](https://github.com/YechengChu/practice/tree/master/proj2/task6#运行结果展示)
+- [参考资料](https://github.com/YechengChu/practice/tree/master/proj2/task6#参考资料)
 ## 目标
 建立一个http服务器，上传一个彩色图片，返回该彩色的黑白图片
 ## 代码
