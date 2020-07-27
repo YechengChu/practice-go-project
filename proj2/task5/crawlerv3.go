@@ -53,7 +53,7 @@ func main() {
 	// make sub-folder gitbook in Network-Programming-with-Go to save all the css and js files
 	os.Mkdir("./Network-Programming-with-Go/gitbook", 0777)
 
-  // mainly handle html pages
+	// mainly handle html pages
 	c.OnResponse(func(r *colly.Response) {
 		// // 以下代码将打印得到的response body的全部内容
 		// fmt.Println("body", string(r.Body))
