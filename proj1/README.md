@@ -1,3 +1,5 @@
+
+
 # :pencil: 目标：用Golang实现用户注册登录功能
 
 * 打开localhost:3000/signup，填写注册信息
@@ -13,14 +15,16 @@
 * 数据库使用postgres
 * 登录状态缓存使用redis
 
-## To Do：
-:radio_button: 使用redis
-
 ## 运行
 ```
+$ chmod +x redis.sh
+$ ./redis.sh
 $ go build -o app
 $ ./app
 ```
 
+注：需要安装postgres和redis
+
 ## Note
+
 Code adapted from https://github.com/demo-apps/go-gin-app

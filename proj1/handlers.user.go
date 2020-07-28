@@ -3,14 +3,13 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
-
-var UserName string
 
 func showLoginPage(c *gin.Context) {
 	// Call the render function with the name of the template to render
@@ -28,12 +27,11 @@ func performLogin(c *gin.Context) {
 	if isUserValid(username, password) {
 		// If the username/password is valid set the token in a cookie
 		token := generateSessionToken()
-		UserName = username
+		fmt.Println(token)
 		c.SetCookie("token", token, 3600, "", "", false, true)
-		c.Set("is_logged_in", true)
-		render(c, gin.H{
-			"title":   "Successful Login",
-			"payload": username}, "logged.html")
+		addInRedis(token, username)
+		// redirect to profile page
+		c.Redirect(http.StatusMovedPermanently, "/profile")
 	} else {
 		// If the username/password combination is invalid,
 		// show the error message on the login page
@@ -51,19 +49,21 @@ func generateSessionToken() string {
 }
 
 func viewProfile(c *gin.Context) {
-	loggedInInterface, _ := c.Get("is_logged_in")
-	loggedIn := loggedInInterface.(bool)
+	token, _ := c.Cookie("token")
+	loggedIn := isLoggedInRedis(token)
 	if loggedIn {
+		username := getInRedis(token)
 		render(c, gin.H{
 			"title":   "Successful Login",
-			"payload": UserName}, "logged.html")
+			"payload": username}, "logged.html")
 	} else {
 		c.Redirect(http.StatusTemporaryRedirect, "/signin")
 	}
 }
 
 func logout(c *gin.Context) {
-
+	token, _ := c.Cookie("token")
+	removedInRedis(token)
 	// Clear the cookie
 	c.SetCookie("token", "", -1, "", "", false, true)
 
@@ -86,11 +86,9 @@ func register(c *gin.Context) {
 		// If the user is created, set the token in a cookie and log the user in
 		token := generateSessionToken()
 		c.SetCookie("token", token, 3600, "", "", false, true)
-		c.Set("is_logged_in", true)
-    UserName = username
-		render(c, gin.H{
-			"title":   "Successful registration & Login",
-			"payload": username}, "logged.html")
+		addInRedis(token, username)
+		// redirect to profile page
+		c.Redirect(http.StatusMovedPermanently, "/profile")
 	} else {
 		// If the username/password combination is invalid,
 		// show the error message on the login page

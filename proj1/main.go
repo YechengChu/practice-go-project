@@ -11,9 +11,12 @@ import (
 var router *gin.Engine
 
 func main() {
-  // init the database
-  initDB()
+	// init the database
+	initDB()
 	defer closeDB()
+	// init the redis Server
+	connectRedis()
+	defer closeRedis()
 
 	// Set the router as the default one provided by Gin
 	router = gin.Default()
@@ -33,8 +36,11 @@ func main() {
 // If the header doesn't specify this, HTML is rendered, provided that
 // the template name is present
 func render(c *gin.Context, data gin.H, templateName string) {
-	loggedInInterface, _ := c.Get("is_logged_in")
-	data["is_logged_in"] = loggedInInterface.(bool)
+	token, _ := c.Cookie("token")
+
+	// 设置html中的is_logged_in
+	data["is_logged_in"] = isLoggedInRedis(token)
+	// fmt.Println(data["is_logged_in"])
 
 	switch c.Request.Header.Get("Accept") {
 	case "application/json":

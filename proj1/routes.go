@@ -7,11 +7,6 @@ import (
 )
 
 func initializeRoutes() {
-
-	// Use the setUserStatus middleware for every route to set a flag
-	// indicating whether the request was from an authenticated user or not
-	router.Use(setUserStatus())
-
 	// Handle the index route
 	router.GET("/", showIndexPage)
 
@@ -31,7 +26,7 @@ func initializeRoutes() {
 		// Ensure that the user is logged in by using the middleware
 		userRoutes.GET("logout", ensureLoggedIn(), logout)
 
-    // Handle GET request at /profile
+		// Handle GET request at /profile
 		userRoutes.GET("profile", viewProfile)
 
 		// Handle the GET requests at /signup

@@ -73,7 +73,7 @@ func query(givenAcc string) (hasAccount bool, pass string) {
 	psqlInfo := fmt.Sprintf("SELECT password FROM users WHERE account='%s';", givenAcc)
 	info, err := db.Query(psqlInfo)
 	checkErr(err)
-	fmt.Printf("info has type %T\n", info)
+	// fmt.Printf("info has type %T\n", info)
 	for info.Next() {
 		err = info.Scan(&pass)
 		checkErr(err)
