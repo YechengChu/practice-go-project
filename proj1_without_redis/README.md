@@ -18,7 +18,7 @@ $ go build -o app
 $ ./app
 ```
 
-注：需要安装redis数据库
+注：需要安装postgres数据库
 
 ## 注意 ⚠️
 
