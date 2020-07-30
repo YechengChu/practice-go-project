@@ -11,7 +11,7 @@
 - https://chai2010.cn/advanced-go-programming-book/
 - https://books.studygolang.com/gopl-zh/
 
-## :paperclip: Task1
+## :paperclip: [Task1](https://github.com/YechengChu/practice/tree/master/proj2/task1)
 ### Reference
 - https://www.cnblogs.com/lfri/p/11769254.html
 - https://www.cnblogs.com/famine/p/11973534.html
@@ -26,7 +26,7 @@
   $ telnet 127.0.0.1 50000
   ```
   
-## :paperclip: Task2
+## :paperclip: [Task2](https://github.com/YechengChu/practice/tree/master/proj2/task2)
 ### Reference
 - code in Task1
 - https://www.ctolib.com/dengsgo-math-engine.html
@@ -40,7 +40,7 @@
   $ telnet 127.0.0.1 50000
   ```
 
-## :paperclip: Task3
+## :paperclip: [Task3](https://github.com/YechengChu/practice/tree/master/proj2/task3)
 ### Reference
 - code in Task1
 - https://gobyexample.com/random-numbers
@@ -61,7 +61,7 @@
 ## :paperclip: Task4
 ### Due to lack of knowledge of CGO programming, this task is skipped!
   
-## :paperclip: Task5
+## :paperclip: [Task5](https://github.com/YechengChu/practice/tree/master/proj2/task5)
 ### Reference
 - http://go-colly.org/docs/examples/basic/
 - https://www.jianshu.com/p/cda08dde65cd
@@ -99,7 +99,7 @@
   ```
   localhost:3000
   ```
-## :paperclip: Task6
+## :paperclip: [Task6](https://github.com/YechengChu/practice/tree/master/proj2/task6)
 ### Reference
 - https://blog.csdn.net/stpeace/article/details/82716145
 - https://blog.csdn.net/BlackCarDriver/article/details/87870109
