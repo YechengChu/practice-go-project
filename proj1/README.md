@@ -37,6 +37,7 @@ localhost:3000
 ![Screen Shot 2020-07-29 at 19.54.50.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1596023753711-083227af-e530-4317-9931-9833b65c790a.png#align=left&display=inline&height=268&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-29%20at%2019.54.50.png&originHeight=357&originWidth=761&size=32817&status=done&style=none&width=571)
 ![Screen Shot 2020-07-29 at 19.55.07.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1596023764999-90e29d7b-c8b1-4a26-a580-df4919e7a0d5.png#align=left&display=inline&height=270&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-29%20at%2019.55.07.png&originHeight=360&originWidth=771&size=33569&status=done&style=none&width=578)
 ![Screen Shot 2020-07-29 at 19.55.22.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1596023774066-2d1c37a4-fa0f-474b-9340-adecb51811e6.png#align=left&display=inline&height=277&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-29%20at%2019.55.22.png&originHeight=370&originWidth=775&size=31470&status=done&style=none&width=581)
+
 注册成功后会跳转profile界面
 ![Screen Shot 2020-07-29 at 19.57.16.png](https://cdn.nlark.com/yuque/0/2020/png/1609946/1596023847930-d7a6bde3-f120-4e0e-8532-64f435ab2b4f.png#align=left&display=inline&height=900&margin=%5Bobject%20Object%5D&name=Screen%20Shot%202020-07-29%20at%2019.57.16.png&originHeight=900&originWidth=1440&size=53620&status=done&style=none&width=1440)
 点击home可以到index界面，此时导航栏的显示是登陆状态的显示(有logout，无register和login)
