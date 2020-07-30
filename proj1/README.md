@@ -1,4 +1,16 @@
 # :pencil: 用Golang实现用户注册登录功能
+## 目录
+- [目标](https://github.com/YechengChu/practice/tree/master/proj1#目标)
+- [模块需求](https://github.com/YechengChu/practice/tree/master/proj1#模块需求)
+- [运行](https://github.com/YechengChu/practice/tree/master/proj1#运行)
+- [展示](https://github.com/YechengChu/practice/tree/master/proj1#展示)
+- [各golang文件功能](https://github.com/YechengChu/practice/tree/master/proj1#各golang文件功能)
+- [各html文件介绍](https://github.com/YechengChu/practice/tree/master/proj1#各html文件介绍)
+- [Note](https://github.com/YechengChu/practice/tree/master/proj1#note)
+- [附录](https://github.com/YechengChu/practice/tree/master/proj1#附录)
+  - [目录结构](https://github.com/YechengChu/practice/tree/master/proj1#目录结构)
+  - [代码](https://github.com/YechengChu/practice/tree/master/proj1#代码)
+
 ## 目标
 
 - 打开localhost:3000/signup，填写注册信息
