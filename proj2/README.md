@@ -80,10 +80,12 @@
   ```
 - Wait until the program is finished
 - Open the folder named 'downloaded' and select folders and htmls to open
-#### For version 3
+#### For version 3 & 4
 - In the terminal run
   ```
-  $ go run crawlerv3.go  
+  $ go run crawlerv3.go
+  OR
+  $ go run crawlerv4.go
   ```
 - Wait until the program is finished
 - Make sure you have [Node js](https://nodejs.org/en/download/) installed on your pc
