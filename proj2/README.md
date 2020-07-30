@@ -52,6 +52,8 @@
   $ go run randomNum.go
   OR
   $ go run randomNum2.go
+  OR
+  $ go run randomNum3.go
   ```
 - In another terminal run
   ```
