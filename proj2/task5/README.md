@@ -3,6 +3,7 @@
 ---
 
 # :warning: 注意: 此README已经过时
+# :warning: Note: The README is out of date
 # [点击查看最新文档](https://yechengchu.github.io/go-colly-demo/)
 
 ---
