@@ -10,7 +10,7 @@
 - [附录](https://github.com/YechengChu/practice/tree/master/proj1#附录)
   - [目录结构](https://github.com/YechengChu/practice/tree/master/proj1#目录结构)
   - [代码](https://github.com/YechengChu/practice/tree/master/proj1#代码)
-> In this mini project, postgres and redis are used, my note on the simple use of postgres and redis can be downloaded seperatedly
+> In this mini project, postgres and redis are used, my notes on the simple use of postgres and redis are avaliable
 > - Click [here](https://github.com/YechengChu/practice-go-project/raw/master/proj1/Golang操作postgres数据库.pdf) to download my note for the use of postgres
 > - Click [here](https://github.com/YechengChu/practice-go-project/raw/master/proj1/Redis使⽤.pdf) to download my note for the use of redis
 
