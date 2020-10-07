@@ -13,3 +13,5 @@ $ go run example.go
 - https://godoc.org/github.com/antchfx/htmlquery
 - https://www.runoob.com/xpath/xpath-syntax.html
 - https://stackoverflow.com/questions/48611185/retrieve-raw-data-from-html-node
+
+> My simple note can be downloaded [here](https://github.com/YechengChu/practice-go-project/raw/master/proj0/使用Golang爬取网站数据.pdf)
